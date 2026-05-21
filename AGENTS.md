@@ -26,6 +26,10 @@
 - State management for React components is handled by `src/components/ThemeProvider.tsx`.
 
 ## Commands
-- **Dev Server:** `npm run dev`
+- **Dev Server:** `npm run dev` (Requires Node.js >= 22.12.0)
 - **Build:** `npm run build` (outputs to `dist/`)
 - **Add Integration:** `npx astro add <integration>`
+
+## Deployment
+- Deployed on **Vercel** (`https://portafolio-astro-sebitax.vercel.app/`).
+- Rely on standard Astro build commands; Vercel handles the SSG output automatically.

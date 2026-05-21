@@ -1,0 +1,21 @@
+# Configuración de Dependabot para mantener las dependencias y Actions seguros
+version: 2
+updates:
+  # Analiza y actualiza los paquetes de npm (package.json)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels:
+      - "security"
+      - "dependencies"
+
+  # Mantiene actualizadas las GitHub Actions usadas en los workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "security"
+      - "actions"
