@@ -17,13 +17,20 @@
 - **Color Variables:** Colors in `global.css` must be wrapped in `hsl(...)` (e.g., `--background: hsl(0 0% 4%);`).
 - **Adding Components:** Use `npx shadcn@latest add <component>`. `components.json` is already configured for v4 (`"config": ""`). 
 
-### Astro + React (Islands)
+### Astro + React (Islands) & Asset Handling
 - Interactive Shadcn UI components (React) used inside `.astro` files **must** have client directives (e.g., `<Button client:load />` or `client:idle`) to execute JavaScript on the browser. Without this, they render as static HTML.
+- **Icon Imports in `.astro` files:** DO NOT import `lucide-react` icons directly into `.astro` files (e.g., `import { Github } from 'lucide-react'`). This causes ESM/CommonJS conflicts with Vite. Use inline SVGs for icons inside `.astro` files, or wrap them in a `.tsx` component first.
+- **Images:** All project images must be placed in `src/assets/` and rendered using Astro's native `<Image src={import} />` component from `astro:assets` to ensure automatic web optimization.
 
-### Dark Mode
+### Dark Mode & SEO
 - Dark mode state is stored in `localStorage` under the key `vite-ui-theme`.
 - To prevent FOUC (Flash of Unstyled Content), an inline script exists in `src/layouts/Layout.astro`. Do not remove it.
 - State management for React components is handled by `src/components/ThemeProvider.tsx`.
+- View Transitions are enabled via `<ClientRouter />` in the main layout.
+
+## CI/CD & Automation
+- **GitHub Actions:** CI pipeline runs on `main` pushes/PRs (Node 22, `npm ci`, `npm audit`, `npm run build`). Do not push code that fails the build step.
+- **Dependabot:** Configured to update NPM packages and Actions weekly.
 
 ## Commands
 - **Dev Server:** `npm run dev` (Requires Node.js >= 22.12.0)
