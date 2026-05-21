@@ -72,10 +72,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
       }
     </script>
+    
+    <!-- JSON-LD Structured Data para SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Carlos González",
+        "jobTitle": "Desarrollador Full Stack",
+        "url": "https://portafolio-astro-sebitax.vercel.app",
+        "sameAs": [
+          "https://linkedin.com/in/carlosgonzalez",
+          "https://github.com/sebitax-god"
+        ]
+      }
+    </script>
   </head>
   <body class="min-h-screen bg-background font-sans antialiased text-foreground selection:bg-primary/30 selection:text-primary">
     <!-- Grid overlay sutil -->
-    <div class="fixed inset-0 z-[-1] h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+    <div class="fixed inset-0 z-[-1] h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none"></div>
     <slot />
   </body>
 </html>
