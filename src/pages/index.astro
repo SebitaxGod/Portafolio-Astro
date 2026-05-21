@@ -1,11 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import ThemeProvider from '@/components/ThemeProvider';
+
+// Imágenes de placeholder para optimización
+import profileImage from '@/assets/profile.jpg';
+import magnoliasImage from '@/assets/project-magnolias.jpg';
 
 const experience = [
   {
@@ -36,7 +41,8 @@ const projects = [
     title: "Sistema de Gestión 'Magnolias Asesorías'",
     description: "Proyecto de Título. Desarrollé una plataforma escalable optimizando arquitectura y rendimiento. Integré flujos inteligentes para automatizar asesorías y reducir la carga operativa. Diseñé bases de datos robustas y gestioné versiones.",
     tags: ["Arquitectura de Software", "Bases de Datos", "Automatización"],
-    link: "#"
+    link: "#",
+    image: magnoliasImage
   }
 ];
 
@@ -76,44 +82,51 @@ const skills = [
   <main class="container mx-auto max-w-5xl px-4 lg:px-8 py-12 md:py-24 relative">
     
     <!-- Hero Section -->
-    <section id="perfil" class="relative flex flex-col items-start gap-6 py-8 md:py-20 md:pb-28">
+    <section id="perfil" class="relative flex flex-col md:flex-row items-center gap-10 py-8 md:py-20 md:pb-28">
       <!-- Glow Orb tras el Hero -->
       <div class="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[100px] pointer-events-none -z-10"></div>
       
-      <div class="opacity-0 animate-fade-in-up">
-        <Badge variant="secondary" class="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-medium tracking-wide">
-          Ingeniero en Informática
-        </Badge>
-      </div>
-      
-      <h1 class="text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl lg:text-7xl lg:leading-[1.1] opacity-0 animate-fade-in-up animate-delay-100">
-        Hola, soy <span class="text-gradient">Carlos González.</span> <br class="hidden sm:inline" />
-        Desarrollador Full Stack & <br class="hidden sm:inline" /> Data Analysis.
-      </h1>
-      
-      <p class="max-w-[700px] text-lg text-muted-foreground sm:text-xl font-light leading-relaxed opacity-0 animate-fade-in-up animate-delay-200">
-        Enfoque en el desarrollo de soluciones Full Stack y optimización de procesos mediante el análisis de datos y la automatización con IA. Especialista en integrar tecnologías modernas como React y Node.js para generar eficiencia operativa.
-      </p>
-      
-      <div class="flex flex-wrap gap-2 mt-2 opacity-0 animate-fade-in-up animate-delay-300">
-        {skills.map((skill) => (
-          <Badge variant="outline" class="bg-background/50 backdrop-blur-sm border-border/50 text-xs px-3 py-1 rounded-md hover:border-primary/50 transition-colors">
-            {skill}
+      <div class="flex-1 space-y-6">
+        <div class="opacity-0 animate-fade-in-up">
+          <Badge variant="secondary" class="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-medium tracking-wide">
+            Ingeniero en Informática
           </Badge>
-        ))}
-      </div>
+        </div>
+        
+        <h1 class="text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl lg:text-7xl lg:leading-[1.1] opacity-0 animate-fade-in-up animate-delay-100">
+          Hola, soy <span class="text-gradient">Carlos González.</span> <br class="hidden sm:inline" />
+          Desarrollador Full Stack & <br class="hidden sm:inline" /> Data Analysis.
+        </h1>
+        
+        <p class="max-w-[700px] text-lg text-muted-foreground sm:text-xl font-light leading-relaxed opacity-0 animate-fade-in-up animate-delay-200">
+          Enfoque en el desarrollo de soluciones Full Stack y optimización de procesos mediante el análisis de datos y la automatización con IA. Especialista en integrar tecnologías modernas como React y Node.js para generar eficiencia operativa.
+        </p>
+        
+        <div class="flex flex-wrap gap-2 mt-2 opacity-0 animate-fade-in-up animate-delay-300">
+          {skills.map((skill) => (
+            <Badge variant="outline" class="bg-background/50 backdrop-blur-sm border-border/50 text-xs px-3 py-1 rounded-md hover:border-primary/50 transition-colors">
+              {skill}
+            </Badge>
+          ))}
+        </div>
 
-      <div class="flex gap-4 mt-8 opacity-0 animate-fade-in-up animate-delay-400">
-        <a href="#proyectos">
-          <Button size="lg" class="rounded-full px-8 shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all">
-            Ver Proyectos
-          </Button>
-        </a>
-        <a href="#contacto">
-          <Button variant="secondary" size="lg" class="rounded-full px-8 glass-panel hover:bg-secondary/80">
-            Contactar
-          </Button>
-        </a>
+        <div class="flex gap-4 mt-8 opacity-0 animate-fade-in-up animate-delay-400">
+          <a href="#proyectos">
+            <Button size="lg" class="rounded-full px-8 shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all">
+              Ver Proyectos
+            </Button>
+          </a>
+          <a href="#contacto">
+            <Button variant="secondary" size="lg" class="rounded-full px-8 glass-panel hover:bg-secondary/80">
+              Contactar
+            </Button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="w-56 h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 shrink-0 relative opacity-0 animate-fade-in-up animate-delay-300">
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-full blur-2xl opacity-20"></div>
+        <Image src={profileImage} alt="Retrato de Carlos González" width={400} height={400} class="rounded-full object-cover w-full h-full border-4 border-background shadow-xl relative z-10" />
       </div>
     </section>
 
@@ -183,6 +196,11 @@ const skills = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
           <div class="glass-panel glass-panel-hover rounded-2xl flex flex-col h-full overflow-hidden group">
+            {project.image && (
+              <div class="w-full h-48 overflow-hidden">
+                <Image src={project.image} alt={`Captura del proyecto ${project.title}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+            )}
             <div class="p-6 md:p-8 flex flex-col h-full">
               <h3 class="text-2xl font-bold font-heading mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
               <p class="text-muted-foreground font-light leading-relaxed mb-6 flex-grow">{project.description}</p>
