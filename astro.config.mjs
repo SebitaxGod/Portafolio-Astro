@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sebitax-portfolio.vercel.app',
+  site: 'https://portafolio-astro-sebitax.vercel.app',
   integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()]
